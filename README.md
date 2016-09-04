@@ -98,4 +98,8 @@ typeof null
 
 ---
 
+###预览本地图片方法？
+####答案：
+有两种方法：1.使用FileReader;2.使用window.URL.createObjectURL
 
+---
