@@ -85,4 +85,17 @@ console.log(a.length); // 分解成: 1.a=new String("string"); 2.输出a.length;
 
 ---
 
+###下面表达式的值分别是什么？
+```javascript
+typeof 100
+typeof undefined
+typeof [1, 2]
+typeof NaN
+typeof null
+```
+####答案:
+"number"、"undefined"、"object"、"number"、"object"
+
+---
+
 
