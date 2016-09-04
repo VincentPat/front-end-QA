@@ -103,3 +103,94 @@ typeof null
 有两种方法：1.使用FileReader;2.使用window.URL.createObjectURL
 
 ---
+
+###下面的表达式中，a的值是？
+```javascript
+var a = (1,2,3);
+```
+####答案：
+a的值是3，逗号运算符会取最后一个表达式的值。
+
+---
+
+###如何使一个对象的属性不可被删除？
+####答案：
+```javascript
+var obj = {};
+Object.defineProperty(obj, "x", {
+    configurable: false,
+    value: 1
+});
+obj.x; // 1
+delete obj.x; // false
+obj.x; // 1
+```
+
+---
+
+###下面的a、b分别输出什么？
+```javascript
+function foo() {
+    var a = b = 1;
+}
+foo();
+console.log(a);
+console.log(b);
+```
+####答案：
+a输出undefined, b输出1。原因是b其实是全局变量，执行顺序为：1.b = 1; 2.var a = b。
+
+---
+
+###下面两种调用函数方法，哪一种会抛出异常？
+```javascript
+fd();
+function fd() {
+    return true;
+}
+
+fe();
+var fe = function() {
+    return true;
+}
+```
+####答案：
+第二种会抛出TypeError。第一种为函数声明，会被优先处理，或者叫函数前置，因此调用没有问题；第二种为函数表达式，执行表达式前函数未被定义，因此抛出异常。
+
+---
+
+###为什么with语句不推荐使用？
+####答案:
+使JS引擎优化变得困难，在执行之前不能确定作用域；可读性差，维护困难；严格模式下被禁用。
+
+---
+
+###列举一下严格模式下的区别？
+####答案：
+- 不能使用with
+- 不允许未声明的变量被赋值
+- arguments变为参数的静态副本，例如修改arguments[0] = 100;第一个参数不会变成100
+- delete参数、函数名会报错
+- delete不可配置的属性报错
+- 对象字面量重复属性名报错
+- 禁止八进制字面量，如010
+- eval，arguments变为关键字，不能作为变量、函数名
+- eval独立作用域，并在eval返回时丢弃
+- 一般函数调用时（非对象的方法调用，也不是用apply/call/bind等修改this），则this指向null，而非全局对象window
+- 使用apply/call时，如传入null或undefined时，this将指向null或undefined，而非全局对象window
+- 试图修改不可写属性（writable=false），在不可扩展的对象上添加属性时抛出TypeError，而不是忽略
+- arguments.caller，arguments.callee被禁用
+
+---
+
+###下面表达式输出为？
+```javascript
+!function(a) {
+    arguments[0] = 100;
+    console.log(a);
+}(1);
+```
+####答案：
+输出1，修改arguments不会导致原参数的改变。
+
+---
