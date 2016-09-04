@@ -134,11 +134,11 @@ function foo() {
     var a = b = 1;
 }
 foo();
-console.log(a);
-console.log(b);
+console.log(typeof a);
+console.log(typeof b);
 ```
 ####答案：
-a输出undefined, b输出1。原因是b其实是全局变量，执行顺序为：1.b = 1; 2.var a = b。
+a输出undefined, b输出number。原因是b其实是全局变量，执行顺序为：1.b = 1; 2.var a = b，而函数内定义var a，因此在函数体外无法访问a，因此undefined。
 
 ---
 
