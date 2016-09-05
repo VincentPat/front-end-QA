@@ -194,3 +194,53 @@ var fe = function() {
 输出1，修改arguments不会导致原参数的改变。
 
 ---
+
+###如何判断下面代码中obj.z是继承过来的属性？
+```javascript
+function foo(){};
+foo.prototype.z = 3;
+var obj = new foo();
+obj.z; // 3
+```
+####答案：
+'z' in obj;返回true，证明obj自身或原型链上有z这个属性；obj.hasOwnProperty('z');返回false，证明obj自身没有z这个属性。因此得出obj.z是继承过来的属性。
+
+---
+
+###列举对象的属性标签？各标签的意义又是什么？
+####答案：
+对象的属性标签有：writable（可写）,enumerable（可枚举）,configurable（可配置）。
+
+
+---
+
+###如何禁止对象增加属性？
+####答案：
+```javascript
+var obj = {x:1};
+Object.preventExtensions(obj);
+Object.isExtensible(obj); // false
+```
+
+---
+
+###如何禁止对象进行配置？
+####答案：
+```javascript
+var obj = {x:1};
+Object.seal(obj);
+Object.isSealed(obj); // true
+```
+
+---
+
+###如何禁止对象进行任何修改？
+####答案：
+```javascript
+var obj = {x:1};
+Object.freeze(obj);
+Object.isFrozen(obj); // true
+```
+
+---
+
