@@ -262,3 +262,39 @@ apply方法的参数以数组形式传入，call方法的参数则逐个传入
 
 ---
 
+###当调用一个函数时，JS执行上下文的环境构建时，进行的变量初始化有那几部分？
+####答案：
+分3部分，按顺序执行：
+1.函数参数（若未传入，初始化该参数值为undefined）
+2.函数声明（若发生命名冲突，会覆盖）
+3.变量声明（初始化变量值为undefined，若发生命名冲突，会忽略）
+
+---
+
+###下面的代码输出结果是？
+```javascript
+function foo(x, y, z) {
+    function func() {};
+    var func;
+    console.log(func);
+}
+foo(100);
+```
+####答案：
+输出function func() {};原因是变量声明时，发生了命名冲突，会自动忽略该声明，因此func是个函数。
+
+---
+
+###下面两次输出a的值，分别是什么？
+```javascript
+function test() {
+    console.log("before:"+a);
+    var a = 100;
+    console.log("after:"+a);
+}
+```
+####答案：
+第一次输出undefined，第二次输出100。考点是变量声明提前。
+
+---
+
