@@ -1,5 +1,5 @@
-# front-end-interview
-前端面试题
+# front-end-QA
+前端问题集
 
 ###IE和Chrome、FireFox、Safari等在子节点数量上的区别？
 例如：
