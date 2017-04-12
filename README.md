@@ -2,8 +2,6 @@
 
 前端问题集
 
-![](./images/container.svg)
-
 ## IE和Chrome、FireFox、Safari等在子节点数量上的区别？
 
 例如：
